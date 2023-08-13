@@ -30,8 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const imageSrc = imagePreview.querySelector('img') ? imagePreview.querySelector('img').src : '';
         const videoSrc = videoPreview.querySelector('iframe') ? videoPreview.querySelector('iframe').src : '';
 
-        // You can handle publishing logic here, like sending the content to a server.
-        // This is a simplified example, and actual publishing would involve more complexity.
         console.log('Text content:', textContent);
         console.log('Image source:', imageSrc);
         console.log('Video source:', videoSrc);
