@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html language="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="style.css">  
+     <script src="script.js"></script>
+    <title>Blog Editor</title>
+</head>
+<body>
+    <header>
+        <h1>Create Your Blog Post</h1>
+    </header>
+
+    <main>
+        <section id="text-section">
+            <h2>Text Content</h2>
+            <textarea id="text-editor" rows="8" cols="80" placeholder="Write your blog text here"></textarea>
+        </section>
+
+        <section id="image-section">
+            <h2>Images</h2>
+            <input type="file" accept="image/*" id="image-input">
+            <div id="image-preview"></div>
+        </section>
+
+        <section id="video-section">
+            <h2>Video</h2>
+            <input type="text" id="video-url" placeholder="Enter video URL">
+            <div id="video-preview"></div>
+        </section>
+
+        
+
+        <button id="publish-button">Publish</button>
+    </main>
+
+    <script>
+        const textEditor = document.getElementById('text-editor');
+        const imageInput = document.getElementById('image-input');
+        const imagePreview = document.getElementById('image-preview');
+        const videoUrlInput = document.getElementById('video-url');
+        const videoPreview = document.getElementById('video-preview');
+        const publishButton = document.getElementById('publish-button');
+
+        imageInput.addEventListener('change', (event) => {
+            const selectedImage = event.target.files[0];
+            const imageUrl = URL.createObjectURL(selectedImage);
+            const imageElement = document.createElement('img');
+            imageElement.src = imageUrl;
+            imagePreview.innerHTML = '';
+            imagePreview.appendChild(imageElement);
+        });
+
+        videoUrlInput.addEventListener('input', () => {
+            const videoUrl = videoUrlInput.value;
+            const videoElement = document.createElement('iframe');
+            videoElement.src = videoUrl;
+            videoElement.width = '560';
+            videoElement.height = '315';
+            videoPreview.innerHTML = '';
+            videoPreview.appendChild(videoElement);
+        });
+
+        publishButton.addEventListener('click', () => {
+            const textContent = textEditor.value;
+          
+            console.log('Text content:', textContent);
+        });
+    </script>
+</body>
+</html>
+
+
